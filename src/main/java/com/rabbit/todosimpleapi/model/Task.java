@@ -1,5 +1,7 @@
 package com.rabbit.todosimpleapi.model;
 
+import com.rabbit.todosimpleapi.dto.TaskRequestDTO;
+import com.rabbit.todosimpleapi.dto.TaskResponseDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -36,5 +38,17 @@ public class Task {
         this.id = id;
         this.name = name;
         this.description = description;
+    }
+
+    public Task(TaskRequestDTO taskRequestDTO){
+        this.id = taskRequestDTO.id();
+        this.name = taskRequestDTO.name();
+        this.description = taskRequestDTO.description();
+    }
+
+    public Task(TaskResponseDTO taskResponseDTO){
+        this.id = taskResponseDTO.id();
+        this.name = taskResponseDTO.name();
+        this.description = taskResponseDTO.description();
     }
 }

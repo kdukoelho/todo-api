@@ -1,6 +1,8 @@
 package com.rabbit.todosimpleapi.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.rabbit.todosimpleapi.dto.UserRequestDTO;
+import com.rabbit.todosimpleapi.dto.UserResponseDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -43,5 +45,17 @@ public class User{
         this.id = id;
         this.username = username;
         this.passwordHash = passwordHash;
+    }
+
+    public User(UserRequestDTO userRequestDTO){
+        this.id = userRequestDTO.id();
+        this.username = userRequestDTO.username();
+        this.passwordHash = userRequestDTO.passwordHash();
+    }
+
+    public User(UserResponseDTO userResponseDTO){
+        this.id = userResponseDTO.id();
+        this.username = userResponseDTO.username();
+        this.passwordHash = userResponseDTO.passwordHash();
     }
 }
