@@ -13,7 +13,7 @@ import java.util.Optional;
 public class TaskService {
 
     @Autowired
-    TaskRepository taskRepository;
+    private TaskRepository taskRepository;
 
     public TaskResponseDTO findById(String id){
         try{
