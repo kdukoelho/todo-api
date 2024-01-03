@@ -48,7 +48,6 @@ public class User{
     }
 
     public User(UserRequestDTO userRequestDTO){
-        this.id = userRequestDTO.id();
         this.username = userRequestDTO.username();
         this.passwordHash = userRequestDTO.passwordHash();
     }

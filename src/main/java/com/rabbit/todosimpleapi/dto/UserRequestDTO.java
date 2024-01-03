@@ -1,4 +1,4 @@
 package com.rabbit.todosimpleapi.dto;
 
-public record UserRequestDTO(String id, String username, String passwordHash) {
+public record UserRequestDTO(String username, String passwordHash) {
 }
