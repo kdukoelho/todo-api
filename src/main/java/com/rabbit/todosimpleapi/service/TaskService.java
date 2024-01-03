@@ -54,11 +54,12 @@ public class TaskService {
     }
 
     @Transactional
-    public TaskResponseDTO update(TaskRequestDTO taskRequestDTO){
+    public TaskResponseDTO update(TaskRequestDTO taskRequestDTO, String id){
         try{
-            Task task = new Task(taskRequestDTO);
+            Task task = new Task(findById(id));
             task.setName(taskRequestDTO.name());
             task.setDescription(taskRequestDTO.description());
+            this.taskRepository.save(task);
             return new TaskResponseDTO(task);
         } catch(Exception ex){
             System.out.println(ex.getMessage());
