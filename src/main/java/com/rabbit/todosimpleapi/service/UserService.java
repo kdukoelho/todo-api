@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +17,18 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+
+    public List<UserResponseDTO> findAll(){
+        try{
+            List<UserResponseDTO> userResponseDTOList = new ArrayList<>();
+            this.userRepository.findAll().forEach(user -> userResponseDTOList.add(new UserResponseDTO(user)));
+            return userResponseDTOList;
+        } catch(RuntimeException ex){
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
 
     public UserResponseDTO findById(String id){
         try{
