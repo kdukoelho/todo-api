@@ -7,6 +7,9 @@ import com.rabbit.todosimpleapi.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -14,6 +17,17 @@ public class TaskService {
 
     @Autowired
     private TaskRepository taskRepository;
+
+    public List<TaskResponseDTO> findAll(){
+        try{
+            ArrayList<TaskResponseDTO> taskResponseDTOList = new ArrayList<>();
+            this.taskRepository.findAll().forEach(task -> taskResponseDTOList.add(new TaskResponseDTO(task)));
+            return taskResponseDTOList;
+        } catch(RuntimeException ex){
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
 
     public TaskResponseDTO findById(String id){
         try{
