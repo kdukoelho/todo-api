@@ -41,7 +41,6 @@ public class Task {
     }
 
     public Task(TaskRequestDTO taskRequestDTO){
-        this.id = taskRequestDTO.id();
         this.name = taskRequestDTO.name();
         this.description = taskRequestDTO.description();
     }
