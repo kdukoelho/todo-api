@@ -18,6 +18,17 @@ public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
 
+    public List<TaskResponseDTO> findAllByUserId(String userId){
+        try{
+            ArrayList<TaskResponseDTO> taskResponseDTOList = new ArrayList<>();
+            this.taskRepository.findAllByUserId(userId).forEach(task -> taskResponseDTOList.add(new TaskResponseDTO(task)));
+            return taskResponseDTOList;
+        } catch (RuntimeException ex){
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
+
     public List<TaskResponseDTO> findAll(){
         try{
             ArrayList<TaskResponseDTO> taskResponseDTOList = new ArrayList<>();

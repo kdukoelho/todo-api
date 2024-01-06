@@ -18,6 +18,17 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<TaskResponseDTO>> findAllByUserId(@PathVariable String userId){
+        try{
+            List<TaskResponseDTO> taskResponseDTOList = this.taskService.findAllByUserId(userId);
+            return ResponseEntity.ok().body(taskResponseDTOList);
+        } catch(RuntimeException ex){
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
+
     @GetMapping
     public ResponseEntity<List<TaskResponseDTO>> findAll() {
         try {
