@@ -31,57 +31,32 @@ public class TaskController {
 
     @GetMapping
     public ResponseEntity<List<TaskResponseDTO>> findAll() {
-        try {
             List<TaskResponseDTO> taskResponseDTOList = this.taskService.findAll();
             return ResponseEntity.ok().body(taskResponseDTOList);
-        } catch (RuntimeException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return ResponseEntity.badRequest().build();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<TaskResponseDTO> findById(@PathVariable String id) {
-        try {
             TaskResponseDTO responseDTO = this.taskService.findById(id);
             return ResponseEntity.ok().body(responseDTO);
-        } catch (RuntimeException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return ResponseEntity.badRequest().build();
     }
 
     @PostMapping()
     public ResponseEntity<Void> create(@RequestBody TaskRequestDTO taskRequestDTO) {
-        try {
             TaskResponseDTO taskResponseDTO = this.taskService.create(taskRequestDTO);
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(taskResponseDTO.id()).toUri();
             return ResponseEntity.created(uri).build();
-        } catch (RuntimeException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return ResponseEntity.badRequest().build();
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Void> update(@RequestBody TaskRequestDTO taskRequestDTO, @PathVariable String id) {
-        try {
             this.taskService.update(taskRequestDTO, id);
             return ResponseEntity.noContent().build();
-        } catch (RuntimeException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return ResponseEntity.badRequest().build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable String id){
-        try{
             this.taskService.delete(id);
             return ResponseEntity.noContent().build();
-        } catch(RuntimeException ex){
-            System.out.println(ex.getMessage());
-        }
-        return ResponseEntity.badRequest().build();
     }
 }
