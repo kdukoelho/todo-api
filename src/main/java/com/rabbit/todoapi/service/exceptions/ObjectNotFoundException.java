@@ -1,4 +1,4 @@
-package com.rabbit.todosimpleapi.service.exceptions;
+package com.rabbit.todoapi.service.exceptions;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;

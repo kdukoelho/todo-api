@@ -1,6 +1,6 @@
-package com.rabbit.todosimpleapi.repository;
+package com.rabbit.todoapi.repository;
 
-import com.rabbit.todosimpleapi.model.User;
+import com.rabbit.todoapi.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

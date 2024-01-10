@@ -1,6 +1,6 @@
-package com.rabbit.todosimpleapi.repository;
+package com.rabbit.todoapi.repository;
 
-import com.rabbit.todosimpleapi.model.Task;
+import com.rabbit.todoapi.model.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

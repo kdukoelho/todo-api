@@ -1,8 +1,8 @@
-package com.rabbit.todosimpleapi.controller;
+package com.rabbit.todoapi.controller;
 
-import com.rabbit.todosimpleapi.dto.TaskRequestDTO;
-import com.rabbit.todosimpleapi.dto.TaskResponseDTO;
-import com.rabbit.todosimpleapi.service.TaskService;
+import com.rabbit.todoapi.dto.TaskRequestDTO;
+import com.rabbit.todoapi.dto.TaskResponseDTO;
+import com.rabbit.todoapi.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

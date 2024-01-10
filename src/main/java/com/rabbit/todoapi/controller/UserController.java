@@ -1,9 +1,9 @@
-package com.rabbit.todosimpleapi.controller;
+package com.rabbit.todoapi.controller;
 
-import com.rabbit.todosimpleapi.dto.UserRequestDTO;
-import com.rabbit.todosimpleapi.dto.UserResponseDTO;
-import com.rabbit.todosimpleapi.model.User;
-import com.rabbit.todosimpleapi.service.UserService;
+import com.rabbit.todoapi.dto.UserRequestDTO;
+import com.rabbit.todoapi.dto.UserResponseDTO;
+import com.rabbit.todoapi.model.User;
+import com.rabbit.todoapi.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

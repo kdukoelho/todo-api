@@ -1,4 +1,4 @@
-package com.rabbit.todosimpleapi;
+package com.rabbit.todoapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

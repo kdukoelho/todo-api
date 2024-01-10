@@ -1,6 +1,6 @@
-package com.rabbit.todosimpleapi.dto;
+package com.rabbit.todoapi.dto;
 
-import com.rabbit.todosimpleapi.model.User;
+import com.rabbit.todoapi.model.User;
 
 public record UserResponseDTO(String id, String username, String passwordHash) {
     public UserResponseDTO(User user){

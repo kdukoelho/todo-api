@@ -1,6 +1,6 @@
-package com.rabbit.todosimpleapi.dto;
+package com.rabbit.todoapi.dto;
 
-import com.rabbit.todosimpleapi.model.Task;
+import com.rabbit.todoapi.model.Task;
 
 public record TaskResponseDTO(String id, String name, String description) {
     public TaskResponseDTO(Task task){

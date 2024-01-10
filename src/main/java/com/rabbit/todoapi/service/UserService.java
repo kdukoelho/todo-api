@@ -1,10 +1,10 @@
-package com.rabbit.todosimpleapi.service;
+package com.rabbit.todoapi.service;
 
-import com.rabbit.todosimpleapi.dto.UserRequestDTO;
-import com.rabbit.todosimpleapi.dto.UserResponseDTO;
-import com.rabbit.todosimpleapi.model.User;
-import com.rabbit.todosimpleapi.repository.UserRepository;
-import com.rabbit.todosimpleapi.service.exceptions.ObjectNotFoundException;
+import com.rabbit.todoapi.dto.UserRequestDTO;
+import com.rabbit.todoapi.dto.UserResponseDTO;
+import com.rabbit.todoapi.model.User;
+import com.rabbit.todoapi.repository.UserRepository;
+import com.rabbit.todoapi.service.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

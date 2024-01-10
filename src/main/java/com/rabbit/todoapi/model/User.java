@@ -1,21 +1,23 @@
-package com.rabbit.todosimpleapi.model;
+package com.rabbit.todoapi.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.rabbit.todosimpleapi.dto.UserRequestDTO;
-import com.rabbit.todosimpleapi.dto.UserResponseDTO;
+import com.rabbit.todoapi.dto.UserRequestDTO;
+import com.rabbit.todoapi.dto.UserResponseDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
 @Entity @Table(name = User.TABLE_NAME)
 @Data @NoArgsConstructor
-public class User{
+public class User implements UserDetails {
     public final static String TABLE_NAME = "tb_user";
     public interface CreateUser {}
     public interface UpdateUser {}
@@ -57,4 +59,35 @@ public class User{
         this.username = userResponseDTO.username();
         this.passwordHash = userResponseDTO.passwordHash();
     }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
+
 }

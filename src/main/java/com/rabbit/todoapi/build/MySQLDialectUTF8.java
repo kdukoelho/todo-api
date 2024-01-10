@@ -1,4 +1,4 @@
-package com.rabbit.todosimpleapi.build;
+package com.rabbit.todoapi.build;
 
 import org.hibernate.dialect.DatabaseVersion;
 import org.hibernate.dialect.MySQLDialect;

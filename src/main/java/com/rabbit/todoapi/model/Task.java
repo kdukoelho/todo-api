@@ -1,7 +1,7 @@
-package com.rabbit.todosimpleapi.model;
+package com.rabbit.todoapi.model;
 
-import com.rabbit.todosimpleapi.dto.TaskRequestDTO;
-import com.rabbit.todosimpleapi.dto.TaskResponseDTO;
+import com.rabbit.todoapi.dto.TaskRequestDTO;
+import com.rabbit.todoapi.dto.TaskResponseDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.rabbit.todosimpleapi.model.Task.*;
+import static com.rabbit.todoapi.model.Task.*;
 
 @Entity @Table(name = TABLE_NAME)
 @Data @NoArgsConstructor

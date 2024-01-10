@@ -1,4 +1,4 @@
-package com.rabbit.todosimpleapi.exception;
+package com.rabbit.todoapi.exception;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

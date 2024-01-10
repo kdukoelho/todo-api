@@ -1,4 +1,4 @@
-package com.rabbit.todosimpleapi;
+package com.rabbit.todoapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
