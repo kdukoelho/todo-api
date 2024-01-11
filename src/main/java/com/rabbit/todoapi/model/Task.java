@@ -2,6 +2,7 @@ package com.rabbit.todoapi.model;
 
 import com.rabbit.todoapi.dto.TaskRequestDTO;
 import com.rabbit.todoapi.dto.TaskResponseDTO;
+import com.rabbit.todoapi.model.user.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

@@ -2,7 +2,7 @@ package com.rabbit.todoapi.controller;
 
 import com.rabbit.todoapi.dto.UserRequestDTO;
 import com.rabbit.todoapi.dto.UserResponseDTO;
-import com.rabbit.todoapi.model.User;
+import com.rabbit.todoapi.model.user.User;
 import com.rabbit.todoapi.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
