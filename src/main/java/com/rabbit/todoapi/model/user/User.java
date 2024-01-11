@@ -1,13 +1,15 @@
-package com.rabbit.todoapi.model;
+package com.rabbit.todoapi.model.user;
 
 import com.rabbit.todoapi.dto.UserRequestDTO;
 import com.rabbit.todoapi.dto.UserResponseDTO;
+import com.rabbit.todoapi.model.Task;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
@@ -43,10 +45,12 @@ public class User implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "task_id"))
     private List<Task> taskList = new ArrayList<Task>();
 
-    public User(String id, String username, String passwordHash){
-        this.id = id;
+    private UserRole role;
+
+    public User(String username, String passwordHash, UserRole role){
         this.username = username;
         this.passwordHash = passwordHash;
+        this.role = role;
     }
 
     public User(UserRequestDTO userRequestDTO){
@@ -62,32 +66,36 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        if (this.role == UserRole.ADMIN){
+            return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
+        } else {
+            return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        }
     }
 
     @Override
     public String getPassword() {
-        return null;
+        return this.passwordHash;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
 }
