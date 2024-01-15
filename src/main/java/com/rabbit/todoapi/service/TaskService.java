@@ -42,6 +42,7 @@ public class TaskService {
     public TaskResponseDTO create(TaskRequestDTO taskRequestDTO){
             Task task = new Task(taskRequestDTO);
             taskRepository.save(task);
+            taskRepository.addRelatedUser(taskRequestDTO.user_id(), task.getId());
             return new TaskResponseDTO(task);
     }
 
