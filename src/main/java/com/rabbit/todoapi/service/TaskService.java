@@ -2,9 +2,10 @@ package com.rabbit.todoapi.service;
 
 import com.rabbit.todoapi.dto.TaskRequestDTO;
 import com.rabbit.todoapi.dto.TaskResponseDTO;
-import com.rabbit.todoapi.model.Task;
+import com.rabbit.todoapi.model.task.Task;
 import com.rabbit.todoapi.repository.TaskRepository;
 import com.rabbit.todoapi.service.exceptions.ObjectNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,7 +40,7 @@ public class TaskService {
     }
 
     @Transactional
-    public TaskResponseDTO create(TaskRequestDTO taskRequestDTO){
+    public TaskResponseDTO create(@Valid TaskRequestDTO taskRequestDTO){
             Task task = new Task(taskRequestDTO);
             taskRepository.save(task);
             taskRepository.addRelatedUser(taskRequestDTO.user_id(), task.getId());
@@ -47,7 +48,7 @@ public class TaskService {
     }
 
     @Transactional
-    public TaskResponseDTO update(TaskRequestDTO taskRequestDTO, String id){
+    public TaskResponseDTO update(@Valid TaskRequestDTO taskRequestDTO, String id){
             Task task = new Task(findById(id));
             task.setName(taskRequestDTO.name());
             task.setDescription(taskRequestDTO.description());

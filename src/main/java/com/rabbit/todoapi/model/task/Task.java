@@ -1,4 +1,4 @@
-package com.rabbit.todoapi.model;
+package com.rabbit.todoapi.model.task;
 
 import com.rabbit.todoapi.dto.TaskRequestDTO;
 import com.rabbit.todoapi.dto.TaskResponseDTO;
@@ -12,9 +12,7 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.rabbit.todoapi.model.Task.*;
-
-@Entity @Table(name = TABLE_NAME)
+@Entity @Table(name = Task.TABLE_NAME)
 @Data @NoArgsConstructor
 public class Task {
     public static final String TABLE_NAME = "tb_task";
@@ -32,23 +30,28 @@ public class Task {
     @Size(max = 100)
     private String description;
 
+    private TaskState state;
+
     @ManyToMany(mappedBy = "taskList")
     private List<User> usersList = new ArrayList<>();
 
-    public Task(String id, String name, String description){
+    public Task(String id, String name, String description, TaskState state){
         this.id = id;
         this.name = name;
         this.description = description;
+        this.state = state;
     }
 
     public Task(TaskRequestDTO taskRequestDTO){
         this.name = taskRequestDTO.name();
         this.description = taskRequestDTO.description();
+        this.state = taskRequestDTO.state();
     }
 
     public Task(TaskResponseDTO taskResponseDTO){
         this.id = taskResponseDTO.id();
         this.name = taskResponseDTO.name();
         this.description = taskResponseDTO.description();
+        this.state = taskResponseDTO.state();
     }
 }

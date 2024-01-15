@@ -1,4 +1,6 @@
 package com.rabbit.todoapi.dto;
 
-public record TaskRequestDTO(String name, String description, String user_id) {
+import com.rabbit.todoapi.model.task.TaskState;
+
+public record TaskRequestDTO(String name, String description, String user_id, TaskState state) {
 }
