@@ -55,9 +55,9 @@ public class TaskService {
             return new TaskResponseDTO(task);
     }
 
-    public String delete(String id){
-            taskRepository.deleteTaskUserRelationshipById(id);
-            taskRepository.deleteById(id);
+    @Transactional
+    public String delete(String user_id, String task_id){
+            taskRepository.deleteTaskUserRelationshipById(user_id, task_id);
             return "operation completed";
     }
 }

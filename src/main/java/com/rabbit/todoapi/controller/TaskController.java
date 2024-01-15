@@ -19,7 +19,7 @@ public class TaskController {
     private TaskService taskService;
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<TaskResponseDTO>> findAllByUserId(@PathVariable String userId){
+    public ResponseEntity<List<TaskResponseDTO>> findByUserId(@PathVariable String userId){
         try{
             List<TaskResponseDTO> taskResponseDTOList = this.taskService.findAllByUserId(userId);
             return ResponseEntity.ok().body(taskResponseDTOList);
@@ -54,9 +54,9 @@ public class TaskController {
             return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable String id){
-            this.taskService.delete(id);
+    @DeleteMapping("/{user_id}/{task_id}")
+    public ResponseEntity<Void> delete(@PathVariable String user_id, @PathVariable String task_id){
+            this.taskService.delete(user_id, task_id);
             return ResponseEntity.noContent().build();
     }
 }
