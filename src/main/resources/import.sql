@@ -4,9 +4,9 @@ INSERT INTO tb_user(id, username, pass_hash, role) VALUES("1", "Fernanda Agatha 
 INSERT INTO tb_user(id, username, pass_hash, role) VALUES("2", "Rafaela Yasmin da Rocha", "\x15\xd5\x10\x90\x938\xdb\xe1T\x7f\x9a\xe3\xef\xff\xccV", 1);
 INSERT INTO tb_user(id, username, pass_hash, role) VALUES("3", "Guilherme Bento Iago da Silva", "QlY;Iu}\x94:\xe4^\x19\x1e\x02\xe9\xa2", 1);
 
-INSERT INTO tb_task(id, name, description, state) VALUES("1", "Take garbage out", "", 0);
-INSERT INTO tb_task(id, name, description, state) VALUES("2", "Clean house", "We need to clean the rooms and the kitchen", 1);
-INSERT INTO tb_task(id, name, description, state) VALUES("3", "Finish biology exercise", "Ecologic relationships", 2);
+INSERT INTO tb_task(id, name, description, state, priority) VALUES("1", "Take garbage out", "", 1, 1);
+INSERT INTO tb_task(id, name, description, state, priority) VALUES("2", "Clean house", "We need to clean the rooms and the kitchen", 0, 0);
+INSERT INTO tb_task(id, name, description, state, priority) VALUES("3", "Finish biology exercise", "Ecologic relationships", 2, 2);
 
 INSERT INTO user_has_task(user_id, task_id) VALUES("1", "1");
 INSERT INTO user_has_task(user_id, task_id) VALUES("2", "2");

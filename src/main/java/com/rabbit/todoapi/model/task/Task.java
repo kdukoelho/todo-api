@@ -30,22 +30,26 @@ public class Task {
     @Size(max = 100)
     private String description;
 
+    private TaskPriority priority;
+
     private TaskState state;
 
     @ManyToMany(mappedBy = "taskList")
     private List<User> usersList = new ArrayList<>();
 
-    public Task(String id, String name, String description, TaskState state){
+    public Task(String id, String name, String description, TaskState state, TaskPriority priority){
         this.id = id;
         this.name = name;
         this.description = description;
         this.state = state;
+        this.priority = priority;
     }
 
     public Task(TaskRequestDTO taskRequestDTO){
         this.name = taskRequestDTO.name();
         this.description = taskRequestDTO.description();
         this.state = taskRequestDTO.state();
+        this.priority = taskRequestDTO.priority();
     }
 
     public Task(TaskResponseDTO taskResponseDTO){
@@ -53,5 +57,6 @@ public class Task {
         this.name = taskResponseDTO.name();
         this.description = taskResponseDTO.description();
         this.state = taskResponseDTO.state();
+        this.priority = taskResponseDTO.priority();
     }
 }
