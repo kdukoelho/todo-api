@@ -1,12 +1,12 @@
 # To-do API
-
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
 ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
 
-This application offers in a url (by default set as http://localhost:8080) data from a <a href=https://github.com/kdukoelho/todo-application-frontend>To-do Application</a>. Its includes users and tasks data. 
+<p align="center"> This application offers in a url (by default set as http://localhost:8080) data from a <a href=https://github.com/kdukoelho/todo-application-frontend>To-do Application</a>. Its includes users and tasks data. This project follows the architecture of REST API's.
+</p>
 
-## Frameworks
+##  💻  Technologies
 The application uses the following frameworks:
 
 - Spring Boot;
@@ -15,9 +15,12 @@ The application uses the following frameworks:
 - JSON Web Token (JWT);
 - Lombok.
 
-## Setting up
-First, you need to install MySQL and open a connection at port 3306 on your localhost, if everything works fines, the application will create a database called "todo-application".
+## 🚀 Setting up
+### Prerequisites
+1. You need to install MySQL and open a connection at port 3306 on your localhost, if everything works fines, the application will create a database called "todo-application";
+2. Maven as path variable, or you can run the application directly on IDE.
 
+### Cloning
 1. Clone this repository on your machine:
 ```bash
 git clone https://github.com/kdukoelho/todo-application-api
@@ -44,33 +47,57 @@ The application has two levels of privilege:
 1. ADMIN: Permission to create, read, update and delete ANY data from database (tasks and users) .
 2. USER: Permission to create, read, update, and delete ONLY your tasks and account.
 
-## End-Points
-The application's endpoints will be presented below, as well as, if necessary, the respective structure of their bodies. In URL's the elements between the braces is non-static variables. All the response data is send in a JSON format, and the request data, should be sent as JSON.
+## API Endpoints
+The application's endpoints will be presented below, as well as, if necessary, the respective structure of their bodies. All the response data is send in a JSON format, and the request data, should be sent as JSON.
 
 ### Authentication
-- Endpoint: SignIn
-URL: http://localhost:8080/auth/login
-Method: POST
-Body: 
-<code>{"username":  "admin",
-"password":  "admin"}</code>
+| Route | Description
+|-------|------------
+| <kbd>POST /auth/login</kbd> | Authenticate user and retrieves a token
+| <kbd>POST /auth/register</kbd> | Register a user (roles: USER & ADMIN)
 
-- Endpoint: SignUp
-URL: http://localhost:8080/auth/register
-Method: POST
-Body:
-<code>{"username":  "kdukoelho",
-"password":  "123456789",
-"role":  "USER"}</code>
+#### POST /auth/login
+
+##### REQUEST
+```json
+{
+	"username":  "admin",
+	"password":  "admin"
+}
+```
+##### RESPONSE
+```json
+{
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0b2RvLWFwaSIsInN1YiI6ImFkbWluIiwiZXhwIjoxNzA1OTQ3OTk4fQ.z3OQXYcsV4_Z_7NmOwJWuZVS-U2pRJAd25tBynH3bXU"
+}
+```
+
+#### POST /auth/register
+
+##### REQUEST
+```json
+{
+	"username": "kdukoelho",
+	"password": "123456789",
+	"role": "USER"
+}
+```
 
 ### Users
-- Endpoint: FindUsers
-URL: http://localhost:8080/user
-Method: GET
-Response-Body:
-<pre><code>[
+| Route | Description
+|--------|-----------
+| <kbd>GET /user</kbd> | Retrieves all users information
+| <kbd>GET /user/{id}</kbd> | Retrieves information about the user that have the specified id
+| <kbd>PUT /user/{id}</kbd> | Update the password (unique non-unique field) of the user that have the specified id
+| <kbd>DELETE /user/{id}</kdb> | Delete the user that has the specified id
+
+#### GET /user 
+
+##### RESPONSE 
+```json
+[
 	{
-		"id":  "9ab911ff-7fc5-4f7b-9dfb-a28b01d351d7,
+		"id":  "9ab911ff-7fc5-4f7b-9dfb-a28b01d351d7",
 		"username":  "robertoKarlos",
 		"passwordHash":  "$2a$10$vxSPCipS4QhZkgggNcaZsen4bpAsMAQk.POxGtJVH7nsKesm4yWr6"},
 	{
@@ -78,37 +105,42 @@ Response-Body:
 		"username":  "kdukoelho",
 		"passwordHash":  "$2a$10$wixQDbU7KdPHMxzr2gNhlOkpNc61YcsGUnAEalfy/pq/ApKBmitem"
 	}
-]</code></pre>
+]
+```
 
-- Endpoint: FindUserById
-URL: http://localhost:8080/user/{user_id}
-Method: GET
-Response-Body: 
-<pre><code>{
+#### GET /user/{user_id}
+##### RESPONSE
+```json
+{
 	"id":  "d77a1c50-11a6-49e2-8e78-80e65ba85ce9",
 	"username":  "kdukoelho",
 	"passwordHash":  "$2a$10$wixQDbU7KdPHMxzr2gNhlOkpNc61YcsGUnAEalfy/pq/ApKBmitem"
-}</code></pre>
+}
+```
 
-- Endpoint: UpdateUser
-URL: http://localhost:8080/user/{user_id}
-Method: PUT
-Body:
-<pre><code>{
+#### PUT /user/{user_id}
+##### REQUEST
+```json
+{
 	"password": "new_password"
-}</code></pre>
+}
+```
 
-- Endpoint: DeleteUser
-URL: http://localhost:8080/user/{user_id}
-Method: DELETE
-Body: -
 
 ### Tasks
-- Endpoint: FindTasks
-URL: http://localhost:8080/task
-Method: GET
-Response-Body:
-<pre><code>[
+| Route | Description
+|--------|-----------
+| <kbd>GET /task</kbd> | Retrieves all tasks information
+| <kbd>GET /task/{task_id}</kbd> | Retrieves information about the task that have the specified id
+| <kbd>GET /task/user/{user_id}</kbd> | Retrieves all tasks information that are related with the specified user id
+| <kbd>POST /task</kbd> | Create a new task
+| <kbd>DELETE /task/{task_id}</kbd> | Deletes the task that has the specified id 
+
+
+#### GET /task
+##### RESPONSE
+```json
+[
 	{
 		"id":  "1",
 		"name":  "Take garbage out",
@@ -123,25 +155,23 @@ Response-Body:
 		"state":  "TODO",
 		"priority":  "LOW"
 	}
-]</code></pre>
-
-- Endpoint: FindTaskById
-URL: http://localhost:8080/task/{task_id}
-Method: GET
-Response-Body: 
-<pre><code>{
+]
+```
+#### GET /task/{task_id}
+##### RESPONSE
+```json
+{
 	"id":  "2",
 	"name":  "Clean house",
 	"description":  "We need to clean the rooms and the kitchen",
 	"state":  "TODO",
 	"priority":  "LOW"
-}</code></pre>
-
-- Endpoint: FindTasksByUserId
-URL: localhost:8080/task/user/{user_id}
-Method: GET
-Response-Body:
-<pre><code>[
+}
+```
+#### GET /task/user/{user_id}
+##### RESPONSE
+```json
+[
 	{
 		"id":  "2",
 		"name":  "Clean house",
@@ -157,10 +187,17 @@ Response-Body:
 		"priority":  "HIGH"
 	}
 ]
-</pre></code>
+```
 
-- Endpoint: DeleteTask
-URL: http://localhost:8080/{user_id}/{task_id}
-Method: DELETE
-Body: -
+#### POST /task
+##### REQUEST
+```json
+{
+	"name":  "Math Exercises",
+	"description":  "Differential calculus exercises",
+	"user_id":  "2",
+	"state":  "DOING",
+	"priority":  "HIGH"
+}
+```
 
