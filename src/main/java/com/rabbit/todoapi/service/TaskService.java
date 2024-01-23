@@ -40,10 +40,10 @@ public class TaskService {
     }
 
     @Transactional
-    public TaskResponseDTO create(@Valid TaskRequestDTO taskRequestDTO){
+    public TaskResponseDTO create(@Valid TaskRequestDTO taskRequestDTO, String userId){
             Task task = new Task(taskRequestDTO);
             taskRepository.save(task);
-            taskRepository.addRelatedUser(taskRequestDTO.user_id(), task.getId());
+            taskRepository.addRelatedUser(userId, task.getId());
             return new TaskResponseDTO(task);
     }
 

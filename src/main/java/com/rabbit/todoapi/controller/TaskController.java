@@ -41,9 +41,9 @@ public class TaskController {
             return ResponseEntity.ok().body(responseDTO);
     }
 
-    @PostMapping()
-    public ResponseEntity<Void> create(@RequestBody TaskRequestDTO taskRequestDTO) {
-            TaskResponseDTO taskResponseDTO = this.taskService.create(taskRequestDTO);
+    @PostMapping("/{userId}")
+    public ResponseEntity<Void> create(@RequestBody TaskRequestDTO taskRequestDTO, @PathVariable String userId) {
+            TaskResponseDTO taskResponseDTO = this.taskService.create(taskRequestDTO, userId);
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(taskResponseDTO.id()).toUri();
             return ResponseEntity.created(uri).build();
     }
