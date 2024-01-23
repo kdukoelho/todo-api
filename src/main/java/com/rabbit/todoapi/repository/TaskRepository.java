@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface TaskRepository extends JpaRepository<Task, String> {
     @Modifying
-    @Query(value = "DELETE FROM user_has_task WHERE user_has_task.user_id = :user_id AND user_has_task.task_id = :task_id", nativeQuery=true)
-    void deleteTaskUserRelationshipById(@Param("user_id") String user_id, @Param("task_id") String task_id);
+    @Query(value = "DELETE FROM user_has_task WHERE user_has_task.task_id = :task_id", nativeQuery=true)
+    void deleteTaskRelationshipById(@Param("task_id") String task_id);
 
     @Modifying
     @Query(value="INSERT INTO user_has_task(user_id, task_id) VALUES(:user_id, :task_id)", nativeQuery = true)

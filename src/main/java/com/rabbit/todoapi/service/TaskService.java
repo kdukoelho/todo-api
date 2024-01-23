@@ -57,8 +57,9 @@ public class TaskService {
     }
 
     @Transactional
-    public String delete(String user_id, String task_id){
-            taskRepository.deleteTaskUserRelationshipById(user_id, task_id);
+    public String delete(String task_id){
+            taskRepository.deleteTaskRelationshipById(task_id);
+            taskRepository.deleteById(task_id);
             return "operation completed";
     }
 }
