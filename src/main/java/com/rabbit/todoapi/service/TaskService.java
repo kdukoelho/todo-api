@@ -49,9 +49,8 @@ public class TaskService {
 
     @Transactional
     public TaskResponseDTO update(@Valid TaskRequestDTO taskRequestDTO, String id){
-            Task task = new Task(findById(id));
-            task.setName(taskRequestDTO.name());
-            task.setDescription(taskRequestDTO.description());
+            Task task = new Task(taskRequestDTO);
+            task.setId(id);
             this.taskRepository.save(task);
             return new TaskResponseDTO(task);
     }
