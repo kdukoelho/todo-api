@@ -1,9 +1,11 @@
-# To-do API
+<h1 align="center"> To-do API
+
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
 ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
+</h1>
 
-<p align="center"> This application offers in a url (by default set as http://localhost:8080) data from a <a href=https://github.com/kdukoelho/todo-application-frontend>To-do Application</a>. Its includes users and tasks data. This project follows the architecture of REST API's.
+<p align="center"> This application offers in an url (by default set as http://localhost:8080) data from a <a href=https://github.com/kdukoelho/todo-application-frontend>To-do Application</a>. Its includes users and tasks data. This project follows the architecture of REST API's.
 </p>
 
 ##  💻  Technologies
@@ -35,7 +37,7 @@ mvn spring-boot:run
 ```
 
 ## Authentication
-To use the application it is necessary to log in to the session, by default, the application already has a admin account that has login and password set as "admin". 
+To use the application it is necessary to log in to the session, by default, the application already has an admin account that has login and password set as "admin". 
 
 We recommend that, when initializing the application, immediately change the password of the admin user.  Creating new users is only possible from an account with administrator privileges, so use the admin account to create your account, and then log out and use the new account. 
 
@@ -51,10 +53,10 @@ The application has two levels of privilege:
 The application's endpoints will be presented below, as well as, if necessary, the respective structure of their bodies. All the response data is send in a JSON format, and the request data, should be sent as JSON.
 
 ### Authentication
-| Route | Description
-|-------|------------
-| <kbd>POST /auth/login</kbd> | Authenticate user and retrieves a token
-| <kbd>POST /auth/register</kbd> | Register a user (roles: USER & ADMIN)
+| Route                          | Description                             |
+|--------------------------------|-----------------------------------------|
+| <kbd>POST /auth/login</kbd>    | Authenticate user and retrieves a token |
+| <kbd>POST /auth/register</kbd> | Register a user (roles: USER & ADMIN)   |
 
 #### POST /auth/login
 
@@ -84,12 +86,12 @@ The application's endpoints will be presented below, as well as, if necessary, t
 ```
 
 ### Users
-| Route | Description
-|--------|-----------
-| <kbd>GET /user</kbd> | Retrieves all users information
-| <kbd>GET /user/{id}</kbd> | Retrieves information about the user that have the specified id
-| <kbd>PUT /user/{id}</kbd> | Update the password (unique non-unique field) of the user that have the specified id
-| <kbd>DELETE /user/{id}</kdb> | Delete the user that has the specified id
+| Route                        | Description                                                                          |
+|------------------------------|--------------------------------------------------------------------------------------|
+| <kbd>GET /user</kbd>         | Retrieves all users information                                                      |
+| <kbd>GET /user/{id}</kbd>    | Retrieves information about the user that have the specified id                      |
+| <kbd>PUT /user/{id}</kbd>    | Update the password (unique non-unique field) of the user that have the specified id |
+| <kbd>DELETE /user/{id}</kdb> | Delete the user that has the specified id                                            |
 
 #### GET /user 
 
@@ -128,14 +130,13 @@ The application's endpoints will be presented below, as well as, if necessary, t
 
 
 ### Tasks
-| Route | Description
-|--------|-----------
-| <kbd>GET /task</kbd> | Retrieves all tasks information
-| <kbd>GET /task/{task_id}</kbd> | Retrieves information about the task that have the specified id
-| <kbd>GET /task/user/{user_id}</kbd> | Retrieves all tasks information that are related with the specified user id
-| <kbd>POST /task</kbd> | Create a new task
-| <kbd>DELETE /task/{task_id}</kbd> | Deletes the task that has the specified id 
-
+| Route                               | Description                                                                 |
+|-------------------------------------|-----------------------------------------------------------------------------|
+| <kbd>GET /task</kbd>                | Retrieves all tasks information                                             |
+| <kbd>GET /task/{task_id}</kbd>      | Retrieves information about the task that have the specified id             |
+| <kbd>GET /task/user/{user_id}</kbd> | Retrieves all tasks information that are related with the specified user id |
+| <kbd>POST /task</kbd>               | Create a new task                                                           |
+| <kbd>DELETE /task/{task_id}</kbd>   | Deletes the task that has the specified id                                  |
 
 #### GET /task
 ##### RESPONSE
