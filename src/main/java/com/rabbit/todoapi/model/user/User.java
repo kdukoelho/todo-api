@@ -54,8 +54,8 @@ public class User implements UserDetails {
     }
 
     public User(UserRequestDTO userRequestDTO){
-        this.username = userRequestDTO.username();
-        this.passwordHash = userRequestDTO.passwordHash();
+        this.passwordHash = userRequestDTO.password();
+        this.role = userRequestDTO.role();
     }
 
     public User(UserResponseDTO userResponseDTO){

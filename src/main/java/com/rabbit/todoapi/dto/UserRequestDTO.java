@@ -1,4 +1,6 @@
 package com.rabbit.todoapi.dto;
 
-public record UserRequestDTO(String username, String passwordHash) {
+import com.rabbit.todoapi.model.user.UserRole;
+
+public record UserRequestDTO(String password, UserRole role) {
 }

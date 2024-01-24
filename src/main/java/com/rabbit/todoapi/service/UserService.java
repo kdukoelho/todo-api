@@ -6,6 +6,7 @@ import com.rabbit.todoapi.model.user.User;
 import com.rabbit.todoapi.repository.UserRepository;
 import com.rabbit.todoapi.service.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,7 +44,8 @@ public class UserService {
     @Transactional
     public UserResponseDTO update(UserRequestDTO userRequestDTO, String id){
             User user = new User(findById(id));
-            user.setPasswordHash(userRequestDTO.passwordHash());
+            user.setPasswordHash(new BCryptPasswordEncoder().encode(userRequestDTO.password()));
+            user.setRole(userRequestDTO.role());
             userRepository.save(user);
             return new UserResponseDTO(user);
     }
