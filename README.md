@@ -124,7 +124,8 @@ The application's endpoints will be presented below, as well as, if necessary, t
 ##### REQUEST
 ```json
 {
-	"password": "new_password"
+    "password": "new_password",
+    "role": "USER"
 }
 ```
 
